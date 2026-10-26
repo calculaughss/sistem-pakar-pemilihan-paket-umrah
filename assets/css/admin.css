@@ -1,0 +1,156 @@
+/* ============================================================
+   admin.css — Tambahan style khusus halaman admin
+   SPK Umrah Persada Al-Amin
+   ============================================================ */
+
+/* ── Print Style (untuk laporan) ───────────────────────────── */
+@media print {
+  .navbar, .sidebar, .btn, .page-subtitle a,
+  button, .table-header .btn, footer { display: none !important; }
+  .admin-wrap { display: block !important; }
+  .admin-content { padding: 0 !important; }
+  .table-wrap { box-shadow: none !important; border: 1px solid #ccc !important; }
+  body { background: white !important; font-size: 13px; }
+  .page-title { font-size: 1.3rem; margin-bottom: 4px; }
+  th, td { padding: 8px 10px !important; }
+}
+
+/* ── Badge Status Aturan ─────────────────────────────────────── */
+.badge-aktif   { background: #EAFAF1; color: #1E8449; border: 1px solid #A9DFBF; }
+.badge-nonaktif { background: #FDFEFE; color: #717D7E; border: 1px solid #D5D8DC; }
+
+/* ── Rule Card ───────────────────────────────────────────────── */
+.rule-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 14px;
+  background: var(--white);
+  transition: box-shadow var(--transition);
+}
+.rule-card:hover { box-shadow: var(--shadow); }
+
+.rule-card-header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 12px 18px;
+  background: var(--cream);
+  border-bottom: 1px solid var(--border);
+}
+.rule-card-body { padding: 14px 18px; }
+
+.rule-if-label  { font-weight: 700; color: var(--gold-dark); font-size: 0.82rem; text-transform: uppercase; letter-spacing: .06em; }
+.rule-then-label { font-weight: 700; color: var(--green); font-size: 0.82rem; text-transform: uppercase; letter-spacing: .06em; }
+
+.kondisi-pill {
+  display: inline-flex; align-items: center; gap: 4px;
+  background: var(--cream-dark); border: 1px solid var(--border);
+  padding: 4px 10px; border-radius: 6px;
+  font-size: 0.81rem; margin: 3px;
+}
+.kondisi-pill strong { color: var(--green); }
+
+/* ── Checkbox Grid (form tambah aturan) ─────────────────────── */
+.cb-kriteria-block {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+.cb-kriteria-header {
+  background: var(--cream); padding: 9px 14px;
+  font-weight: 600; font-size: 0.87rem; color: var(--green);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 8px;
+}
+.cb-kriteria-body { padding: 10px 14px; display: flex; flex-wrap: wrap; gap: 8px; }
+
+.cb-label {
+  display: inline-flex; align-items: center; gap: 6px;
+  cursor: pointer; padding: 5px 12px;
+  border: 1.5px solid var(--border); border-radius: 6px;
+  font-size: 0.84rem; background: var(--white);
+  transition: border-color var(--transition), background var(--transition);
+  user-select: none;
+}
+.cb-label:hover { border-color: var(--green-light); background: #F0F7F2; }
+.cb-label input:checked + span { color: var(--green); font-weight: 600; }
+.cb-label:has(input:checked) { border-color: var(--green); background: #E8F5EE; }
+
+/* ── Stat Card Variants ──────────────────────────────────────── */
+.stat-card.accent-gold  { border-left: 4px solid var(--gold); }
+.stat-card.accent-green { border-left: 4px solid var(--green-light); }
+.stat-card.accent-blue  { border-left: 4px solid #3498DB; }
+.stat-card.accent-red   { border-left: 4px solid var(--danger); }
+
+/* ── Tabel zebra stripe ──────────────────────────────────────── */
+.table-striped tbody tr:nth-child(even) td { background: var(--cream); }
+
+/* ── Input with icon ─────────────────────────────────────────── */
+.input-wrap { position: relative; }
+.input-wrap .input-icon {
+  position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
+  font-size: 0.95rem; pointer-events: none;
+}
+.input-wrap .form-control { padding-left: 36px; }
+
+/* ── Skor Donut (hasil konsultasi di admin) ──────────────────── */
+.skor-circle {
+  width: 64px; height: 64px; border-radius: 50%;
+  background: conic-gradient(var(--gold) var(--pct, 0%), var(--cream-dark) 0%);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 0.85rem; color: var(--green);
+  position: relative; flex-shrink: 0;
+}
+.skor-circle::before {
+  content: ''; position: absolute;
+  width: 46px; height: 46px; border-radius: 50%;
+  background: var(--white);
+}
+.skor-circle span { position: relative; z-index: 1; }
+
+/* ── Pagination ──────────────────────────────────────────────── */
+.pagination {
+  display: flex; gap: 4px; list-style: none;
+  justify-content: center; padding: 20px 0;
+}
+.pagination a, .pagination span {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 36px; height: 36px; border-radius: 6px;
+  font-size: 0.88rem; font-weight: 500;
+  border: 1.5px solid var(--border); color: var(--text);
+  transition: all var(--transition);
+}
+.pagination a:hover { border-color: var(--green); color: var(--green); background: #F0F7F2; }
+.pagination .active span { background: var(--green); color: var(--white); border-color: var(--green); }
+
+/* ── Tooltip ─────────────────────────────────────────────────── */
+[data-tooltip] { position: relative; cursor: help; }
+[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute; bottom: calc(100% + 6px); left: 50%;
+  transform: translateX(-50%); white-space: nowrap;
+  background: var(--text); color: var(--white);
+  padding: 4px 10px; border-radius: 4px; font-size: 0.78rem;
+  pointer-events: none; opacity: 0; transition: opacity .2s;
+  z-index: 200;
+}
+[data-tooltip]:hover::after { opacity: 1; }
+
+/* ── Empty State ─────────────────────────────────────────────── */
+.empty-state {
+  text-align: center; padding: 56px 24px;
+  color: var(--text-muted);
+}
+.empty-state .icon { font-size: 3rem; margin-bottom: 12px; }
+.empty-state h4 { font-family: var(--ff-serif); color: var(--text); margin-bottom: 6px; }
+.empty-state p  { font-size: 0.88rem; max-width: 360px; margin: 0 auto 16px; }
+
+/* ── Responsive admin ────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .admin-content { padding: 16px; }
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+  .table-wrap { overflow-x: auto; }
+  table { min-width: 600px; }
+  .cb-kriteria-body { gap: 6px; }
+  .rule-card-header { flex-direction: column; align-items: flex-start; gap: 8px; }
+}
